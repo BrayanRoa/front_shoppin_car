@@ -1,0 +1,50 @@
+<form action="" [formGroup]="myForm" (ngSubmit)="onSaveOrder()">
+    <div class="body-form">
+
+        <div class="input-data">
+            <label for="">Producto</label>
+            <select class="form-select" aria-label="Default select example" formControlName="producto">
+                <option *ngFor="let product of products" value="{{product.id}}">{{product.descripcion}}</option>
+            </select>
+        </div>
+
+        <div class="input-data">
+            <label for="">Cantidad</label>
+            <input type="number" class="form-control" formControlName="cantidad">
+        </div>
+
+        <div class="input-data">
+            <label for="">Usuario</label>
+            <select class="form-select" aria-label="Default select example" formControlName="DatosUsuario">
+                <option *ngFor="let user of users" value="{{user.id}}">{{user.nombre}}</option>
+            </select>
+        </div>
+
+        <div class="input-data">
+            <label for="">Medio Pago</label>
+            <select class="form-select" aria-label="Default select example" formControlName="idMedioPago">
+                <option *ngFor="let payment of payments" value="{{payment.id}}">{{payment.metodo}}</option>
+            </select>
+        </div>
+
+        <div class="input-data">
+            <label for="">Estado</label>
+            <select class="form-select" aria-label="Default select example" formControlName="idEstado">
+                <option *ngFor="let stade of stades" value="{{stade.id}}">{{stade.nombre}}</option>
+            </select>
+        </div>
+
+        <div class="input-data">
+            <label for="">Comentario</label>
+            <input type="text" class="form-control" formControlName="comentario">
+        </div>
+
+    </div>
+
+
+    <div>
+        <button pRipple type="submit" [disabled]="myForm.invalid" class="submit-button">Save</button>
+        <button pRipple type="button" class="cancel-button" (click)="closeModal()">Cancel</button>
+    </div>
+
+</form>
